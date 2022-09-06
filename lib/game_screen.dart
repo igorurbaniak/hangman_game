@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hangman_game/utils.dart';
 import 'package:new_gradient_app_bar/new_gradient_app_bar.dart';
+import 'dart:math';
 
 class GameScreen extends StatefulWidget {
   const GameScreen({Key? key}) : super(key: key);
@@ -11,6 +12,21 @@ class GameScreen extends StatefulWidget {
 }
 
 class _GameScreenState extends State<GameScreen> {
+  String word = wordslist[Random().nextInt(wordslist.length)];
+  List guessedalphabets = [];
+  String riddletext() {
+    String displayword = '';
+    for (int i = 0; i < word.length; i++) {
+      String char = word[i];
+      if (guessedalphabets.contains(char)) {
+        displayword += char;
+      } else {
+        displayword += '?';
+      }
+    }
+    return displayword;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -83,7 +99,7 @@ class _GameScreenState extends State<GameScreen> {
                 height: 30,
               ),
               Text(
-                '?????',
+                riddletext(),
                 textAlign: TextAlign.center,
                 style: GoogleFonts.audiowide(
                   fontSize: 35,

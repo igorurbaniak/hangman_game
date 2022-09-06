@@ -1,6 +1,6 @@
 List<String> letters = [
   'A',
-    'Ą',
+  'Ą',
   'B',
   'C',
   'Ć',
@@ -35,3 +35,5 @@ List<String> letters = [
   'Ź',
   'Ż',
 ];
+
+List wordslist = ['FLUTTER', 'DART', 'MAGIC', 'CAR', 'GOOGLE'];
