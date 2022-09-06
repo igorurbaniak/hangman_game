@@ -16,6 +16,15 @@ class _GameScreenState extends State<GameScreen> {
   List guessedalphabets = [];
   int points = 0;
   int status = 0;
+  List images = [
+    'images/hangman0.png',
+    'images/hangman1.png',
+    'images/hangman2.png',
+    'images/hangman3.png',
+    'images/hangman4.png',
+    'images/hangman5.png',
+    'images/hangman6.png',
+  ];
 
   String riddletext() {
     String displayword = '';
@@ -117,8 +126,8 @@ class _GameScreenState extends State<GameScreen> {
                 ),
               ),
               const SizedBox(height: 20),
-              const Image(
-                image: AssetImage('images/hangman10.png'),
+              Image(
+                image: AssetImage(images[status]),
                 width: 220,
                 height: 220,
                 fit: BoxFit.cover,
@@ -127,7 +136,7 @@ class _GameScreenState extends State<GameScreen> {
                 height: 15,
               ),
               Text(
-                '7 lives left',
+                '${7 - status} lives left',
                 style: GoogleFonts.audiowide(
                   fontSize: 25,
                   color: Colors.white,
