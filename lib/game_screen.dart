@@ -14,17 +14,28 @@ class GameScreen extends StatefulWidget {
 class _GameScreenState extends State<GameScreen> {
   String word = wordslist[Random().nextInt(wordslist.length)];
   List guessedalphabets = [];
+  
   String riddletext() {
     String displayword = '';
     for (int i = 0; i < word.length; i++) {
       String char = word[i];
       if (guessedalphabets.contains(char)) {
-        displayword += char;
+        displayword += char + ' ';
       } else {
         displayword += '?';
       }
     }
     return displayword;
+  }
+
+  checkalphabet(String alphabet) {
+    if (word.contains(alphabet)) {
+      setState(
+        () {
+          guessedalphabets.add(alphabet);
+        },
+      );
+    }
   }
 
   @override
@@ -126,7 +137,11 @@ class _GameScreenState extends State<GameScreen> {
                   children: letters.map(
                     (alphabet) {
                       return InkWell(
-                        onTap: () {},
+                        onTap: () {
+                          setState(() {
+                            checkalphabet(alphabet);
+                          });
+                        },
                         child: Center(
                           child: Text(
                             alphabet,
