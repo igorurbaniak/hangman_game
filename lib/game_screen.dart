@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:hangman_game/utils.dart';
 import 'package:new_gradient_app_bar/new_gradient_app_bar.dart';
 
 class GameScreen extends StatefulWidget {
@@ -16,7 +17,7 @@ class _GameScreenState extends State<GameScreen> {
       backgroundColor: Colors.black26,
       appBar: NewGradientAppBar(
         gradient: const LinearGradient(
-          colors: [Colors.cyan, Colors.red],
+          colors: [Colors.purple, Colors.blueAccent],
         ),
         centerTitle: true,
         title: Text(
@@ -36,6 +37,7 @@ class _GameScreenState extends State<GameScreen> {
         ],
       ),
       body: SingleChildScrollView(
+        physics: const ScrollPhysics(),
         child: Container(
           alignment: Alignment.center,
           child: Column(
@@ -43,7 +45,9 @@ class _GameScreenState extends State<GameScreen> {
               Container(
                 margin: const EdgeInsets.only(top: 20),
                 alignment: Alignment.center,
-                decoration: const BoxDecoration(color: Colors.lightBlue),
+                decoration: const BoxDecoration(
+                    gradient: LinearGradient(
+                        colors: [Colors.purple, Colors.blueAccent])),
                 width: MediaQuery.of(context).size.width / 3.5,
                 height: 30,
                 child: Center(
@@ -60,8 +64,8 @@ class _GameScreenState extends State<GameScreen> {
               const SizedBox(height: 20),
               const Image(
                 image: AssetImage('images/hangman10.png'),
-                width: 155,
-                height: 155,
+                width: 220,
+                height: 220,
                 fit: BoxFit.cover,
               ),
               const SizedBox(
@@ -74,7 +78,54 @@ class _GameScreenState extends State<GameScreen> {
                   color: Colors.white,
                   fontWeight: FontWeight.w500,
                 ),
-              )
+              ),
+              const SizedBox(
+                height: 30,
+              ),
+              Text(
+                '?????',
+                textAlign: TextAlign.center,
+                style: GoogleFonts.audiowide(
+                  fontSize: 35,
+                  color: Colors.white,
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+              const SizedBox(
+                height: 30,
+              ),
+              Container(
+                decoration: const BoxDecoration(
+                  gradient: LinearGradient(
+                    colors: [Colors.purple, Colors.blueAccent],
+                  ),
+                ),
+                child: GridView.count(
+                  // mainAxisSpacing: 3,
+                  // crossAxisSpacing: 3,
+                  crossAxisCount: 7,
+                  shrinkWrap: true,
+                  physics: const NeverScrollableScrollPhysics(),
+                  childAspectRatio: 1.2,
+                  children: letters.map(
+                    (alphabet) {
+                      return InkWell(
+                        onTap: () {},
+                        child: Center(
+                          child: Text(
+                            alphabet,
+                            style: GoogleFonts.audiowide(
+                              fontSize: 16,
+                              color: Colors.white,
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
+                        ),
+                      );
+                    },
+                  ).toList(),
+                ),
+              ),
             ],
           ),
         ),
