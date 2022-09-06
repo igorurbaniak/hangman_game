@@ -14,15 +14,17 @@ class GameScreen extends StatefulWidget {
 class _GameScreenState extends State<GameScreen> {
   String word = wordslist[Random().nextInt(wordslist.length)];
   List guessedalphabets = [];
-  
+  int points = 0;
+  int status = 0;
+
   String riddletext() {
     String displayword = '';
     for (int i = 0; i < word.length; i++) {
       String char = word[i];
       if (guessedalphabets.contains(char)) {
-        displayword += char + ' ';
+        displayword += '$char ';
       } else {
-        displayword += '?';
+        displayword += '? ';
       }
     }
     return displayword;
@@ -33,8 +35,34 @@ class _GameScreenState extends State<GameScreen> {
       setState(
         () {
           guessedalphabets.add(alphabet);
+          points += 5;
         },
       );
+    } else if (status != 6) {
+      setState(
+        () {
+          status += 1;
+          points -= 5;
+        },
+      );
+    } else {
+      print('You lost');
+    }
+
+    bool isWon = true;
+    for (int i = 0; i < word.length; i++) {
+      String char = word[i];
+      if (!guessedalphabets.contains(char)) {
+        setState(
+          () {
+            isWon = false;
+          },
+        );
+        break;
+      }
+    }
+    if (isWon) {
+      print('Won');
     }
   }
 
@@ -79,7 +107,7 @@ class _GameScreenState extends State<GameScreen> {
                 height: 30,
                 child: Center(
                   child: Text(
-                    '25 points',
+                    '$points points',
                     style: GoogleFonts.audiowide(
                       fontSize: 18,
                       color: Colors.white,
