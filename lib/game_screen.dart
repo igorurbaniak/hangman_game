@@ -65,6 +65,9 @@ class _GameScreenState extends State<GameScreen> {
                   margin: const EdgeInsets.only(top: 20),
                   width: MediaQuery.of(context).size.width / 2,
                   child: TextButton(
+                    style: TextButton.styleFrom(
+                      backgroundColor: Colors.white,
+                    ),
                     onPressed: () {
                       Navigator.pop(context);
                       setState(() {
@@ -160,13 +163,6 @@ class _GameScreenState extends State<GameScreen> {
             fontWeight: FontWeight.w500,
           ),
         ),
-        actions: [
-          IconButton(
-            iconSize: 35,
-            onPressed: () {},
-            icon: const Icon(Icons.volume_up_sharp),
-          ),
-        ],
       ),
       body: SingleChildScrollView(
         physics: const ScrollPhysics(),
@@ -234,8 +230,6 @@ class _GameScreenState extends State<GameScreen> {
                   ),
                 ),
                 child: GridView.count(
-                  // mainAxisSpacing: 3,
-                  // crossAxisSpacing: 3,
                   crossAxisCount: 7,
                   shrinkWrap: true,
                   physics: const NeverScrollableScrollPhysics(),
