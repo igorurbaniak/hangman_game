@@ -26,6 +26,74 @@ class _GameScreenState extends State<GameScreen> {
     'images/hangman6.png',
   ];
 
+  opendialog(String title) {
+    return showDialog(
+      barrierDismissible: false,
+      context: context,
+      builder: (context) {
+        return Dialog(
+          child: Container(
+            width: MediaQuery.of(context).size.width / 2,
+            height: 180,
+            decoration: const BoxDecoration(
+              gradient: LinearGradient(
+                colors: [Colors.purple, Colors.blueAccent],
+              ),
+            ),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  title,
+                  style: GoogleFonts.audiowide(
+                    fontSize: 25,
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+                const SizedBox(height: 5),
+                Text(
+                  'Your points: $points',
+                  style: GoogleFonts.audiowide(
+                      fontSize: 25,
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold),
+                  textAlign: TextAlign.center,
+                ),
+                Container(
+                  margin: const EdgeInsets.only(top: 20),
+                  width: MediaQuery.of(context).size.width / 2,
+                  child: TextButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                      setState(() {
+                        status = 0;
+                        guessedalphabets.clear();
+                        points = 0;
+                        word = wordslist[Random().nextInt(wordslist.length)];
+                      });
+                    },
+                    child: Center(
+                      child: Text(
+                        'PLAY AGAIN !',
+                        style: GoogleFonts.audiowide(
+                          fontSize: 22,
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                  ),
+                )
+              ],
+            ),
+          ),
+        );
+      },
+    );
+  }
+
   String riddletext() {
     String displayword = '';
     for (int i = 0; i < word.length; i++) {
@@ -55,7 +123,7 @@ class _GameScreenState extends State<GameScreen> {
         },
       );
     } else {
-      print('You lost');
+      opendialog('You lost 😥');
     }
 
     bool isWon = true;
@@ -71,7 +139,7 @@ class _GameScreenState extends State<GameScreen> {
       }
     }
     if (isWon) {
-      print('Won');
+      opendialog('Hurray, you won!👏');
     }
   }
 
@@ -110,8 +178,9 @@ class _GameScreenState extends State<GameScreen> {
                 margin: const EdgeInsets.only(top: 20),
                 alignment: Alignment.center,
                 decoration: const BoxDecoration(
-                    gradient: LinearGradient(
-                        colors: [Colors.purple, Colors.blueAccent])),
+                  gradient: LinearGradient(
+                      colors: [Colors.purple, Colors.blueAccent]),
+                ),
                 width: MediaQuery.of(context).size.width / 3.5,
                 height: 30,
                 child: Center(
