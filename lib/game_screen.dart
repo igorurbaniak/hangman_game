@@ -163,6 +163,23 @@ class _GameScreenState extends State<GameScreen> {
             fontWeight: FontWeight.w500,
           ),
         ),
+        actions: [
+          IconButton(
+            onPressed: () {
+              setState(() {
+                status = 0;
+                guessedalphabets.clear();
+                points = 0;
+                word = wordslist[Random().nextInt(wordslist.length)];
+              });
+            },
+            icon: const Icon(
+              Icons.restart_alt_sharp,
+              color: Colors.white,
+            ),
+            iconSize: 35,
+          )
+        ],
       ),
       body: SingleChildScrollView(
         physics: const ScrollPhysics(),
@@ -230,6 +247,8 @@ class _GameScreenState extends State<GameScreen> {
                   ),
                 ),
                 child: GridView.count(
+                  crossAxisSpacing: 3,
+                  mainAxisSpacing: 3,
                   crossAxisCount: 7,
                   shrinkWrap: true,
                   physics: const NeverScrollableScrollPhysics(),

@@ -36,4 +36,15 @@ List<String> letters = [
   'Ż',
 ];
 
-List wordslist = ['FLUTTER', 'DART', 'MAGIC', 'CAR', 'GOOGLE'];
+List wordslist = [
+  'FLUTTER',
+  'DART',
+  'PROVIDER',
+  'SQL',
+  'CUBIT',
+  'BLOC',
+  'RETROFIT',
+  'INJECTABLE', 
+  'DIO',
+  'HTTP',
+  ];
