@@ -1,16 +1,11 @@
-# hangman_game
+Hangman game - the aim of the game is to guess the correct word under the question marks
 
-A new Flutter project.
+<p float="left">
+<img src="https://user-images.githubusercontent.com/106092123/189485827-5237e2e0-a941-41ed-be32-a91e140f3d0e.png" width="300" height="600" />
+<img src="https://user-images.githubusercontent.com/106092123/189486295-09ef1952-8bb8-438e-9bac-7e1f7e47b206.png" width="300" height="600" />
+</p>
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+<p float="left">
+<img src="https://user-images.githubusercontent.com/106092123/189486325-6fb77d29-24f1-4cdb-9f06-0d9affdadb9d.png" width="300" height="600" />
+<img src="https://user-images.githubusercontent.com/106092123/189486348-027cf16b-718a-4bbd-a25b-78c71291e5d4.png" width="300" height="600" />
+</p>
